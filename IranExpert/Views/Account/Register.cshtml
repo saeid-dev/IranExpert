@@ -1,0 +1,93 @@
+﻿@model IranExpert.Models.RegisterViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin 2 - Login</title>
+    <!-- Custom fonts for this template-->
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="bg-primary">
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block" style="background: url(../../images/nicole-wilcox-709785-unsplash.jpg)"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">ایجاد حساب کاربری</h1>
+                            </div>
+                            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "user", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary("", new { @class = "text-danger" })
+                                @*<div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="نام ( ترجیحا به فارسی وارد کنید ) ">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="نام خانوادگی ( ترجیحا به فارسی وارد کنید ) ">
+                                    </div>
+                            </div>*@
+                                <div class="form-group row" dir="ltr">
+                                    <div class="col-sm-6">
+                                        @Html.TextBoxFor(m => m.Email, new { dir = "ltr", @placeholder = "ایمیل", @class = "form-control form-control-user btn-block" })
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="form-control form-control-user" placeholder="نام شهر">
+                                    </div>
+                                </div>
+                                <div class="form-group row" dir="ltr">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        @Html.PasswordFor(m => m.Password, new { dir = "ltr", @placeholder = "رمز عبور", @class = "form-control form-control-user" })
+                                    </div>
+                                    <div class="col-sm-6">
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { dir = "ltr", @placeholder = "تکرار رمز عبور", @class = "form-control form-control-user" })
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">ثبت نام</button>
+                                <hr>
+                                <a href="#" class="btn btn-google btn-user btn-block">
+                                    <i class="fab fa-google fa-fw"></i> Register with Google
+                                </a>
+                                <a href="#" class="btn btn-facebook btn-user btn-block">
+                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                </a>
+                            }
+                            <hr>
+                            <div class="text-center">
+                                @Html.ActionLink("رمز عبور خود را فراموش کرده اید ؟", "ForgotPassword", "Account", new { @class = "small" })
+                            </div>
+                            <div class="text-center">
+                                @Html.ActionLink("صفحه ورود به سایت", "Login", null, new { @class = "small" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <a href="#" class="btn btn-user btn-block text-gray-900 center-block bg-warning" style="height:auto">
+                    <div>
+                        <h4>ورود به صفحه نیازمندی ها</h4>
+                        @*<p>در این بخش می توانید آگهی خود را به صورت <span class="text-danger"> رایگان</span> درج کنید</p>*@
+                    </div>
+
+
+                </a>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout_Home.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">به ایران اکسپرت خوش آمدید</h1>
+    </div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+                <!-- Illustrations -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">هدف از راه اندازی ایران اکسپرت</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="~/images/undraw_posting_photo.svg" alt="">
+                        </div>
+                        <p class="text-gray-900">
+                            با گذشت چند سال زندگی در کشور آلمان و مواجهه با سوالات و ابهامات زیاد خصوصا در سال های
+                            اولیه و همچنین نبود مرجعی برای یافتن پاسخ ها بر آن شدم تا با ایجاد یک شبکه کوچک به منظور جمع آوری اطلاعات مورد نیاز
+                            برای دانشجویان و نیز افراد متخصص بستری فراهم شود تا بتوانیم به هم به منظور رشد و ارتقا فردی و گروهی کمک و یاری رسان باشیم. این در حالی است که کانال های تلگرامی معدودی در حال حاضر این نقش را
+                            به عهده دارند ولی عمده مشکل این نرم افزارهای ارتباطی نداشتن آرشیو و ساختار برای ذخیره و دسترسی به اطلاعات می باشد که این معضل در قالب یک وب سایت قابل حل می باشد. علاوه
+                            بر آن می توان بسیاری از امکانات دیگر را نیز در آن سفارشی سازی نمود.
+                        </p>
+                        @Html.ActionLink("بیشتر ...", "About")
+                    </div>
+                </div>
+            </div>
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+                <!-- Project Card Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">امکانات سایت</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-right">
+                            <img class="img-fluid px-1 px-sm-4 mt-3 mb-4" style="width: 14rem;" src="~/images/features_visitor_alerts.svg" alt="">
+                        </div>
+                        <ul>
+                            <li class="text-dark">امکان وارد نمودن اطلاعات کاربری که شامل اطلاعات شخصی به انضمام شهر و دانشگاه برای دانشجویان و فارغ التحصیلان که به منظور استفاده از خدمات بخش ارتباطات لازم می باشد. </li>
+                            <li class="text-warning">امکان ایجاد رزومه الکترونیکی با امکان وارد نمودن اطلاعات تحصیلی ، حرفه ایی و سایر موارد ( استفاده از این امکان اختیاری می باشد ) </li>
+                            <li class="text-danger">در بخش ارتباطات شما می توانید در اتاق های گفتگو در موضاعات مختلف نظرات خود را بدهید. همچنین در بین اعضاء جستجو و سایر اعضاء پیام خصوصی بدهید. علاوه براین شما می توانید موضوع در رابطه با یادگیری مشارکتی ( Tandem ) ایجاد کنید.</li>
+                            <li class="text-info">در بخش مسیر زندگی در آلمان به ارائه اطلاعات کلی از شروع پروسه اخذ پذیرش در دانشگاه ، تحصیل در دانشگاه ، جستجوی کار ، تفریحات و سرگرمی و همچنین مسائل مربوط به زبان آلمانی و امتحانات مرتبط با آن پرداخته می شود.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">شرایط گرفتن پذیرش از دانشگاه ها</div>
+                            <br />
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Application/Bewerbung</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style="direction:rtl">اطلاعات در مورد تحصیل در آلمان</div>
+                            <br />
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Education / Studium</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">اطلاعات در مورد کار در آلمان</div>
+                            <br />
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Career / Karriere</div>
+                                </div>
+                                <div class="col">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">تفریحات و سرگرمی</div>
+                            <br />
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Hobbys / Hobbies</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</div>

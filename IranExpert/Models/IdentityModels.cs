@@ -20,6 +20,13 @@ namespace IranExpert.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<University> Universities { get; set; }
+        public DbSet<Degree> Degrees { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

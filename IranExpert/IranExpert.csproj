@@ -198,11 +198,21 @@
     <Compile Include="Migrations\201903271034079_InitialCreate.Designer.cs">
       <DependentUpon>201903271034079_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903271824462_ProfileDataModel.cs" />
+    <Compile Include="Migrations\201903271824462_ProfileDataModel.Designer.cs">
+      <DependentUpon>201903271824462_ProfileDataModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\Country.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\Degree.cs" />
+    <Compile Include="Models\University.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ValidationResource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1925,6 +1935,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903271034079_InitialCreate.resx">
       <DependentUpon>201903271034079_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903271824462_ProfileDataModel.resx">
+      <DependentUpon>201903271824462_ProfileDataModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ValidationResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

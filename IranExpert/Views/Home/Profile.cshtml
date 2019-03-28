@@ -37,8 +37,26 @@
                             <br />
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Profile.CityId)
-                                @Html.DropDownListFor(m => m.Profile.CityId, new SelectList(Model.Cities, "Id", "Name"), new { dir="ltr", @class = "form-control form-control-user col-lg-10" })
+                                @Html.DropDownListFor(m => m.Profile.CityId, new SelectList(Model.Cities, "Id", "Name"), new { dir = "ltr", @class = "form-control form-control-user col-lg-10" })
                                 @Html.ValidationMessageFor(m => m.Profile.CityId)
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Profile.UniversityId)
+                                @Html.DropDownListFor(m => m.Profile.UniversityId, new SelectList(Model.Universities, "Id", "Name"), new { dir = "ltr", @class = "form-control form-control-user col-lg-10" })
+                                @Html.ValidationMessageFor(m => m.Profile.UniversityId)
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Profile.CountryId)
+                                @Html.DropDownListFor(m => m.Profile.CountryId, new SelectList(Model.Countries, "Id", "Name"), new { @class = "form-control form-control-user col-lg-10" })
+                                @Html.ValidationMessageFor(m => m.Profile.CountryId)
+                            </div>
+                            <br />                            
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Profile.DegreeId)
+                                @Html.DropDownListFor(m => m.Profile.DegreeId, new SelectList(Model.Degrees, "Id", "Titel"), new { @class = "form-control form-control-user col-lg-10" })
+                                @Html.ValidationMessageFor(m => m.Profile.DegreeId)
                             </div>
                             <br />
                             <button type="submit">save</button>

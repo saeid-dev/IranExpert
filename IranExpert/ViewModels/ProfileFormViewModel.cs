@@ -13,5 +13,11 @@ namespace IranExpert.ViewModels
         public IEnumerable<Status> statuses { get; set; }
 
         public IEnumerable<City> Cities { get; set; }
+
+        public IEnumerable<University> Universities { get; set; }
+
+        public IEnumerable<Country> Countries { get; set; }
+
+        public IEnumerable<Degree> Degrees { get; set; }
     }
 }

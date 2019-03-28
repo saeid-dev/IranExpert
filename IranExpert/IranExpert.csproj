@@ -214,6 +214,14 @@
     <Compile Include="Migrations\201903280826182_ModifyCityModelName.Designer.cs">
       <DependentUpon>201903280826182_ModifyCityModelName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903281146358_PopulateCountry.cs" />
+    <Compile Include="Migrations\201903281146358_PopulateCountry.Designer.cs">
+      <DependentUpon>201903281146358_PopulateCountry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903281151282_PopulateDegrees.cs" />
+    <Compile Include="Migrations\201903281151282_PopulateDegrees.Designer.cs">
+      <DependentUpon>201903281151282_PopulateDegrees.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -1961,6 +1969,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903280826182_ModifyCityModelName.resx">
       <DependentUpon>201903280826182_ModifyCityModelName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903281146358_PopulateCountry.resx">
+      <DependentUpon>201903281146358_PopulateCountry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903281151282_PopulateDegrees.resx">
+      <DependentUpon>201903281151282_PopulateDegrees.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ValidationResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

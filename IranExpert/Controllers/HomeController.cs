@@ -49,8 +49,10 @@ namespace IranExpert.Controllers
             {
                 Profile = new Profile(),
                 statuses = _context.Statuses,
-                Cities = _context.Cities
-                
+                Cities = _context.Cities,
+                Universities = _context.Universities,
+                Countries = _context.Countries,
+                Degrees = _context.Degrees             
             };
 
             return View("Profile", viewModel);
@@ -66,9 +68,9 @@ namespace IranExpert.Controllers
                 StatusId = profileFormViewModel.Profile.StatusId,
                 UserId = User.Identity.GetUserId(),
                 CityId = profileFormViewModel.Profile.CityId,
-                CountryId = 1,
-                UniversityId = 1,
-                DegreeId = 1
+                CountryId = profileFormViewModel.Profile.CountryId,
+                UniversityId = profileFormViewModel.Profile.UniversityId,
+                DegreeId = profileFormViewModel.Profile.DegreeId
             };
 
             _context.Profiles.Add(profile);

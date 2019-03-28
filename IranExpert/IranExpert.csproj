@@ -202,6 +202,18 @@
     <Compile Include="Migrations\201903271824462_ProfileDataModel.Designer.cs">
       <DependentUpon>201903271824462_ProfileDataModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903271950003_PopulateStatus.cs" />
+    <Compile Include="Migrations\201903271950003_PopulateStatus.Designer.cs">
+      <DependentUpon>201903271950003_PopulateStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903280740315_ModofiyCityModelIdKey.cs" />
+    <Compile Include="Migrations\201903280740315_ModofiyCityModelIdKey.Designer.cs">
+      <DependentUpon>201903280740315_ModofiyCityModelIdKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903280826182_ModifyCityModelName.cs" />
+    <Compile Include="Migrations\201903280826182_ModifyCityModelName.Designer.cs">
+      <DependentUpon>201903280826182_ModifyCityModelName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -220,6 +232,7 @@
       <DependentUpon>ValidationResource.resx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ProfileFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\all.min.css" />
@@ -1913,6 +1926,7 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LogoutPartial.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1938,6 +1952,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903271824462_ProfileDataModel.resx">
       <DependentUpon>201903271824462_ProfileDataModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903271950003_PopulateStatus.resx">
+      <DependentUpon>201903271950003_PopulateStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903280740315_ModofiyCityModelIdKey.resx">
+      <DependentUpon>201903280740315_ModofiyCityModelIdKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903280826182_ModifyCityModelName.resx">
+      <DependentUpon>201903280826182_ModifyCityModelName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ValidationResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

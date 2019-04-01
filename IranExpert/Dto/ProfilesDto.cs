@@ -15,7 +15,7 @@ namespace IranExpert.Dto
 
         public CityDto City { get; set; }
 
-        public byte CityId { get; set; }
+        public int CityId { get; set; }
 
         public CountryDto Country { get; set; }
 
@@ -27,7 +27,7 @@ namespace IranExpert.Dto
 
         public UniversityDto University { get; set; }
 
-        public byte UniversityId { get; set; }
+        public int UniversityId { get; set; }
 
         public DegreeDto Degree { get; set; }
 

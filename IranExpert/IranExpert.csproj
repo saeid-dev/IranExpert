@@ -248,6 +248,18 @@
     <Compile Include="Migrations\201903291536057_AddBusinessColumnToProfilesModel.Designer.cs">
       <DependentUpon>201903291536057_AddBusinessColumnToProfilesModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904011457510_EditUniIdProperty.cs" />
+    <Compile Include="Migrations\201904011457510_EditUniIdProperty.Designer.cs">
+      <DependentUpon>201904011457510_EditUniIdProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904011513013_EditCityandUniModel.cs" />
+    <Compile Include="Migrations\201904011513013_EditCityandUniModel.Designer.cs">
+      <DependentUpon>201904011513013_EditCityandUniModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904011532196_EditCityandUniModel1.cs" />
+    <Compile Include="Migrations\201904011532196_EditCityandUniModel1.Designer.cs">
+      <DependentUpon>201904011532196_EditCityandUniModel1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -1812,6 +1824,8 @@
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\sb-admin-2.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Content\Typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1891,6 +1905,8 @@
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\datatables-demo.js" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1911,6 +1927,8 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="Scripts\sb-admin-2.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\typeahead.bundle.js" />
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
@@ -2014,6 +2032,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903291536057_AddBusinessColumnToProfilesModel.resx">
       <DependentUpon>201903291536057_AddBusinessColumnToProfilesModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011457510_EditUniIdProperty.resx">
+      <DependentUpon>201904011457510_EditUniIdProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011513013_EditCityandUniModel.resx">
+      <DependentUpon>201904011513013_EditCityandUniModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011532196_EditCityandUniModel1.resx">
+      <DependentUpon>201904011532196_EditCityandUniModel1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ValidationResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

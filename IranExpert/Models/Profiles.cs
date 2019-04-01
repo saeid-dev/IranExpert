@@ -11,7 +11,7 @@ namespace IranExpert.Models
         public int Id { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resources.ValidationResource), ErrorMessageResourceName = "RequiredField_FullName")]
-        [MinLength(6 , ErrorMessageResourceType = typeof(Resources.ValidationResource), ErrorMessageResourceName = "ValidField_FullName")]
+        //[MinLength(6 , ErrorMessageResourceType = typeof(Resources.ValidationResource), ErrorMessageResourceName = "ValidField_FullName")]
         [StringLength(60)]
         [Display(Name = "نام و نام خانوادگی :")]
         public string FullName { get; set; }
@@ -20,7 +20,7 @@ namespace IranExpert.Models
 
         [Required]
         [Display(Name = "شهر محل سکونت :")]
-        public byte CityId { get; set; }
+        public int CityId { get; set; }
 
         public Country Country { get; set; }
 
@@ -36,7 +36,7 @@ namespace IranExpert.Models
         public University University { get; set; }
         
         [Display(Name = "نام دانشگاه :")]
-        public byte UniversityId { get; set; }
+        public int UniversityId { get; set; }
 
         public Degree Degree { get; set; }
 

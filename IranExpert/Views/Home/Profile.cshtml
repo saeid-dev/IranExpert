@@ -7,20 +7,20 @@
     <!-- Illustrations -->
     <div class="card shadow border-bottom-info mb-5">
         <div class="card-header py-4">
-            <h6 class="m-0 font-weight-bold text-primary">مشخصات کاربری</h6>
+            <h6 class="m-0 font-weight-bold text-primary">مشخصات کاربری ( اطلاعات وارد شده برای تمامی اعضاء قابل رویت می باشد ) </h6>
         </div>
         <div class="card-body text-gray-900">
             <form id="newProfile">
                 <div class="col-xl-12 col-lg-12">
                     <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <p>نام و نام خانوادگی :</p>
-                                <input id="fullname" class="form-control" type="text" style="width:270px">
+                                <input id="fullname" class="form-control" data-rule-required="true" data-msg-required="لطفا نام خود را وارد کنید" type="text" style="width:270px">
                             </div>
                             <div class="form-group">
                                 <p>کشور محل سکونت :</p>
-                                <select name="countrylist" id="country" onChange="combo(this)" class="form-control" style="max-width:270px">
+                                <select name="countrylist" id="country" onChange="countryFunction()" class="form-control" style="max-width:270px">
                                     <option>آلمان</option>
                                     <option>ایران</option>
                                     <option>سایر</option>
@@ -29,12 +29,12 @@
                             <div class="form-group">
                                 <p>شهر محل سکونت :</p>
                                 <div class="input-group">
-                                    <input dir="ltr" id="cities" class="form-control" type="text" style="width:270px">
+                                    <input dir="ltr" id="cities" data-rule-required="true" data-msg-required="*" class="form-control" type="text" style="width:270px">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <p id="de">وضعیت تحصیلی و شغلی :</p>
-                                <select name="statuslist" id="status" class="form-control" style="max-width:270px">
+                                <select name="statuslist" id="status" onChange="statusFunction()" class="form-control" style="max-width:270px">
                                     <option>دانشجو</option>
                                     <option>فارغ التحصیل</option>
                                     <option>دانشجوی زبان</option>
@@ -59,18 +59,18 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-5 bg-gray-100">
+                        <div class="col-lg-6 bg-gray-100">
                             <div class="form-group">
                                 <p>تاریخ تولد : &nbsp; &nbsp;   << اطلاعات این ستون اختیاری می باشد >></p>
-                                <input dir="ltr" id="birthdate" class="form-control" type="text" style="width:270px">
+                                <input dir="ltr" id="birthdate" class="form-control" type="text" style="max-width:270px">
                             </div>
                             <div class="form-group">
                                 <p>تلفن همراه :</p>
-                                <input dir="ltr" id="cellphone" class="form-control" type="text" style="width:270px">
+                                <input dir="ltr" id="cellphone" class="form-control" type="text" style="max-width:270px">
                             </div>
                             <div class="form-group">
                                 <p>آدرس ایمیل :</p>
-                                <input dir="ltr" id="email" class="form-control" type="text" style="width:270px">
+                                <input dir="ltr" id="email" class="form-control font-weight-light" type="text" data-rule-email="true" data-msg-email="لطفا ایمیل را صحیح وارد کنید" style="width:270px">
                             </div>
                             <div class="form-group">
                                 <p>وب سایت :</p>
@@ -97,30 +97,61 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
 
-        function combo(countrylist) {
-            if (countrylist.selectedIndex == 1 || countrylist.selectedIndex == 2) {
-                document.getElementById("status").disabled = true;
-                document.getElementById("cities").disabled = true;
-                document.getElementById("universities").disabled = true;
-                document.getElementById("degree").disabled = true;
+        function countryFunction() {
+
+            var index = document.getElementById("country").selectedIndex;
+            var status = document.getElementById("status");
+            var cities = document.getElementById("cities");
+            var universities = document.getElementById("universities");
+            var degree = document.getElementById("degree");
+
+            if (index == 1 || index == 2) {
+                status.disabled = true;
+                cities.disabled = true;
+                universities.disabled = true;
+                degree.disabled = true;
+                cities.value = '';
+                universities.value = '';
+                status.value = '';
+                degree.value = '';
             }
 
-            if (countrylist.selectedIndex == 0) {
-                document.getElementById("status").disabled = false;
-                document.getElementById("cities").disabled = false;
-                document.getElementById("universities").disabled = false;
-                document.getElementById("degree").disabled = false;
+            if (index == 0) {
+                status.disabled = false;
+                cities.disabled = false;
+                universities.disabled = false;
+                degree.disabled = false;
+
+                status.selectedIndex = 0;
+                degree.selectedIndex = 0;
             }
+
+        }
+
+        function statusFunction() {
+
+            var index = document.getElementById("status").selectedIndex;
+            var universities = document.getElementById("universities");
+            var degree = document.getElementById("degree");
+
+            if (index == 2 || index == 3 || index == 4 || index == 5) {
+                universities.disabled = true;
+                degree.disabled = true;
+                degree.value = '';
+                universities.value = '';
+            }
+
+            if (index == 0 || index == 1) {
+                universities.disabled = false;
+                degree.disabled = false;
+            }
+
         }
 
         $(document).ready(function () {
 
             var profile = {
-                //"BirthDate": null,
-                //"CellPhone": null,
-                //"AlternateEmail": null,
-                //"WebSite": null,
-                //"Business": null,
+
                 "UserId": "728b39b1-8440-4139-b58b-096696f4cb49"
             };
 
@@ -168,30 +199,73 @@
                 submitHandler: function () {
 
                     profile.FullName = $("#fullname").val();
-                    profile.BirthDate = $("#birthdate").val();
-                    profile.CellPhone = $("#cellphone").val();
-                    profile.AlternateEmail = $("#email").val();
-                    profile.WebSite = $("#website").val();
-                    profile.Business = $("#business").val();
+
+                    if ($("#birthdate").val() == '') {
+                        profile.BirthDate = null;
+                    } else {
+                        profile.BirthDate = $("#birthdate").val();
+                    }
+
+                    if ($("#cellphone").val() == '') {
+                        profile.CellPhone = null;
+                    } else {
+                        profile.CellPhone = $("#cellphone").val();
+                    }
+
+                    if ($("#email").val() == '') {
+                        profile.AlternateEmail = null;
+                    } else {
+                        profile.AlternateEmail = $("#email").val();
+                    }
+
+                    if ($("#website").val() == '') {
+                        profile.WebSite = null;
+                    } else {
+                        profile.WebSite = $("#website").val();
+                    }
+
+                    if ($("#business").val() == '') {
+                        profile.Business = null;
+                    } else {
+                        profile.Business = $("#business").val();
+                    }
+
+                    if ($("#universities").val() == '')
+                        profile.UniversityId = 256;
+
+                    if ($("#cities").val() == '')
+                        profile.CityId = 76;
 
                     profile.CountryId = $("#country option:selected").index() + 1;
-                    profile.DegreeId = $("#degree option:selected").index() + 1;
-                    profile.StatusId = $("#status option:selected").index() + 1;
+
+                    if ($("#status option:selected").index() == -1) {
+                        profile.StatusId = 7;
+                    }
+                    else {
+                        profile.StatusId = $("#status option:selected").index() + 1;
+                    }
+
+                    if ($("#degree option:selected").index() == -1) {
+                        profile.DegreeId = 5;
+                    }
+                    else {
+                        profile.DegreeId = $("#degree option:selected").index() + 1;
+                    }
 
                     $.ajax({
                         type: 'POST',
                         contentType: "application/json; charset=utf-8",
                         url: "/api/profiles",
-                        data: JSON.stringify(profile),
-                        success: function (data) {
-                            alert("profile wird hinzugefügt");
-                        },
-                        error: function (result) {
-                            alert("Something Wnt Wrong");
-                        }
+                        data: JSON.stringify(profile)
+                    }).done(function () {
+                        toastr.success("اطلاعات با موفقیت ثبت شد");
                     })
+                        .fail(function () {
+                            toastr.error("خطایی در ورود داده ها وجود دارد");
+                        });
                 }
             });
+
         });
     </script>
 }

@@ -10,8 +10,7 @@ namespace IranExpert.Models
     public class City
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public byte Id { get; set; }
+        public int Id { get; set; }
 
         [StringLength(60)]
         public string Name { get; set; }

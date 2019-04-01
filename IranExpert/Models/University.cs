@@ -8,7 +8,7 @@ namespace IranExpert.Models
 {
     public class University
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
 
         [StringLength(60)]
         public string Name { get; set; }

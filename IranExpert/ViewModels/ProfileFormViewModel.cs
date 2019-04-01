@@ -8,7 +8,7 @@ namespace IranExpert.ViewModels
 {
     public class ProfileFormViewModel
     {
-        public Profile Profile { get; set; }
+        public Profiles Profile { get; set; }
 
         public IEnumerable<Status> statuses { get; set; }
 

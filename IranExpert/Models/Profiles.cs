@@ -6,23 +6,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace IranExpert.Models
 {
-    public class Profile
+    public class Profiles
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        [Display(Name = "نام :")]
-        public string Name { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        [Display(Name = "نام خانوادگی :")]
-        public string Family { get; set; }
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationResource), ErrorMessageResourceName = "RequiredField_FullName")]
+        [MinLength(6 , ErrorMessageResourceType = typeof(Resources.ValidationResource), ErrorMessageResourceName = "ValidField_FullName")]
+        [StringLength(60)]
+        [Display(Name = "نام و نام خانوادگی :")]
+        public string FullName { get; set; }
     
-        [Display(Name = "ساکن آلمان هستم :")]
-        public bool? IsInGermany { get; set; }
-
         public City City { get; set; }
 
         [Required]
@@ -50,6 +43,10 @@ namespace IranExpert.Models
         [Display(Name = "مقطع تحصیلی :")]
         public byte DegreeId { get; set; }
 
+        [Display(Name = "حرفه یا شغل :")]
+        [StringLength(100)]
+        public string Business { get; set; }
+
         [Display(Name = "تاریخ تولد :")]
         public DateTime? BirthDate { get; set; }
 
@@ -57,12 +54,9 @@ namespace IranExpert.Models
         [Display(Name = "تلفن همراه :")]
         public string CellPhone { get; set; }
 
-        [Display(Name = "نمایش ایمیل اختیاری در پروفایل :")]
-        public bool? ViewAlternateEmail { get; set; }
-
         [EmailAddress]
         [StringLength(50)]
-        [Display(Name = "ایمیل دوم جهت نمایش در پروفایل :")]
+        [Display(Name = "آدرس ایمیل :")]
         public string AlternateEmail { get; set; }
 
         [StringLength(50)]

@@ -1,5 +1,8 @@
-﻿using IranExpert.Models;
+﻿using AutoMapper;
+using IranExpert.App_Start;
+using IranExpert.Models;
 using System.Data.Entity;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -12,6 +15,9 @@ namespace IranExpert
     {
         protected void Application_Start()
         {
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

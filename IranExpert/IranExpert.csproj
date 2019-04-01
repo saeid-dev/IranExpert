@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -94,12 +97,24 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -160,15 +175,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Formatting">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.4\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-    </Reference>
     <Reference Include="System.Diagnostics.DiagnosticSource">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
@@ -183,14 +189,26 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CitiesController.cs" />
+    <Compile Include="Controllers\Api\NewProfilesController.cs" />
+    <Compile Include="Controllers\Api\ProfilesController.cs" />
+    <Compile Include="Controllers\Api\UniversitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Dto\CountryDto.cs" />
+    <Compile Include="Dto\DegreeDto.cs" />
+    <Compile Include="Dto\UniversityDto.cs" />
+    <Compile Include="Dto\StatusDto.cs" />
+    <Compile Include="Dto\CityDto.cs" />
+    <Compile Include="Dto\ProfilesDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -222,6 +240,14 @@
     <Compile Include="Migrations\201903281151282_PopulateDegrees.Designer.cs">
       <DependentUpon>201903281151282_PopulateDegrees.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903281624082_ModifyProfileDataModel.cs" />
+    <Compile Include="Migrations\201903281624082_ModifyProfileDataModel.Designer.cs">
+      <DependentUpon>201903281624082_ModifyProfileDataModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903291536057_AddBusinessColumnToProfilesModel.cs" />
+    <Compile Include="Migrations\201903291536057_AddBusinessColumnToProfilesModel.Designer.cs">
+      <DependentUpon>201903291536057_AddBusinessColumnToProfilesModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -230,7 +256,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\Profiles.cs" />
     <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\University.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1786,6 +1812,7 @@
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\sb-admin-2.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1850,6 +1877,8 @@
     <Content Include="images\profile_logo.jpg" />
     <Content Include="images\sunflower.jpg" />
     <Content Include="images\undraw_posting_photo.svg" />
+    <Content Include="Scripts\bloodhound.js" />
+    <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1882,6 +1911,10 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="Scripts\sb-admin-2.min.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1895,7 +1928,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index-Org.cshtml" />
     <Content Include="Views\UsersAdmin\Index.cshtml" />
     <Content Include="Views\UsersAdmin\Edit.cshtml" />
     <Content Include="Views\UsersAdmin\Details.cshtml" />
@@ -1934,6 +1966,7 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LogoutPartial.cshtml" />
+    <Content Include="Views\Profile\New.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -1975,6 +2008,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903281151282_PopulateDegrees.resx">
       <DependentUpon>201903281151282_PopulateDegrees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903281624082_ModifyProfileDataModel.resx">
+      <DependentUpon>201903281624082_ModifyProfileDataModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903291536057_AddBusinessColumnToProfilesModel.resx">
+      <DependentUpon>201903291536057_AddBusinessColumnToProfilesModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ValidationResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

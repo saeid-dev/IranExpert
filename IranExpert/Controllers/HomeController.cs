@@ -47,7 +47,7 @@ namespace IranExpert.Controllers
             /*  var viewModel = new AuthorFormViewModel()*/
             var viewModel = new ProfileFormViewModel
             {
-                Profile = new Profile(),
+                Profile = new Profiles(),
                 statuses = _context.Statuses,
                 Cities = _context.Cities,
                 Universities = _context.Universities,
@@ -61,22 +61,36 @@ namespace IranExpert.Controllers
         [HttpPost]
         public ActionResult Save(ProfileFormViewModel profileFormViewModel)
         {
-            var profile = new Profile()
-            {
-                Name = profileFormViewModel.Profile.Name,
-                Family = profileFormViewModel.Profile.Family,
-                StatusId = profileFormViewModel.Profile.StatusId,
-                UserId = User.Identity.GetUserId(),
-                CityId = profileFormViewModel.Profile.CityId,
-                CountryId = profileFormViewModel.Profile.CountryId,
-                UniversityId = profileFormViewModel.Profile.UniversityId,
-                DegreeId = profileFormViewModel.Profile.DegreeId
-            };
+            //var profile = new Profiles()
+            //{
+            //    FullName = profileFormViewModel.Profile.FullName,
+            //    StatusId = profileFormViewModel.Profile.StatusId,
+            //    UserId = User.Identity.GetUserId(),
+            //    CityId = profileFormViewModel.Profile.CityId,
+            //    CountryId = profileFormViewModel.Profile.CountryId,
+            //    UniversityId = profileFormViewModel.Profile.UniversityId,
+            //    DegreeId = profileFormViewModel.Profile.DegreeId,
 
-            _context.Profiles.Add(profile);
-            _context.SaveChanges();
+            //    BirthDate = profileFormViewModel.Profile.BirthDate,
+            //    AlternateEmail = profileFormViewModel.Profile.AlternateEmail,
+            //    CellPhone = profileFormViewModel.Profile.CellPhone,
+            //    WebSite = profileFormViewModel.Profile.WebSite
+            //};
 
-            return RedirectToAction("Index", "Home");
+            //_context.Profiles.Add(profile);
+            //_context.SaveChanges();
+
+            return RedirectToAction("New", "Home");
+        }
+
+        public ActionResult Test()
+        {
+            return View();
+        }
+
+        public ActionResult Profile()
+        {
+            return View();
         }
     }
 }

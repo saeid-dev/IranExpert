@@ -11,7 +11,9 @@ namespace IranExpert
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.min.js",
                         "~/Scripts/jquery.easing.min.js",
-                        "~/Scripts/sb-admin-2.js"
+                        "~/Scripts/sb-admin-2.js",
+                         "~/Scripts/typeahead.bundle.js",
+                         "~/Scripts/jquery-3.3.1.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -33,7 +35,8 @@ namespace IranExpert
                       "~/Content/sb-admin-2.css",
                       "~/Content/all.min.css",
                       "~/Content/fontawesome-free/css/all.min.css",
-                      "~/Content/site.css"
+                      "~/Content/site.css",
+                      "~/Content/typeahead.css"
                       ));
         }
     }

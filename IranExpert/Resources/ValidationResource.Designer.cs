@@ -113,5 +113,23 @@ namespace IranExpert.Resources {
                 return ResourceManager.GetString("PasswordRequiredValidation", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die نام و نام خانوادگی خود را وارد کنید ähnelt.
+        /// </summary>
+        public static string RequiredField_FullName {
+            get {
+                return ResourceManager.GetString("RequiredField_FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die نام و نام خانوادگی بایستی بیشتر از 6 کارکتر باشد ähnelt.
+        /// </summary>
+        public static string ValidField_FullName {
+            get {
+                return ResourceManager.GetString("ValidField_FullName", resourceCulture);
+            }
+        }
     }
 }

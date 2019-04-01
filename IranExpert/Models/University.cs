@@ -10,7 +10,7 @@ namespace IranExpert.Models
     {
         public byte Id { get; set; }
 
-        [StringLength(30)]
+        [StringLength(60)]
         public string Name { get; set; }
     }
 }

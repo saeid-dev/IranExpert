@@ -5,9 +5,17 @@
 
 <div class="container-fluid">
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+
+    @*<div class="border-bottom-primary jumbotron bg-gray-200">
         <h1 class="h3 mb-0 text-gray-800">به ایران اکسپرت خوش آمدید</h1>
-    </div>
+        <p class="lead">جامعه متخصصین و ایرانیان مقیم آلمان ، در این فضا تمامی نیازمندی های اقشار مختلف پوشش داده می شود. در کنار هم برای آینده ایی روشن</p>
+        <p><a href="http://www.asp.net/identity" class="btn btn-primary btn-large">بیشتر...</a></p>
+    </div>*@
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">به ایران اکسپرت خوش آمدید</h1>
+        </div>
     <!-- Content Row -->
     <div class="row">
         <!-- Content Row -->
@@ -17,20 +25,21 @@
                 <!-- Illustrations -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">هدف از راه اندازی ایران اکسپرت</h6>
+                        <h6 class="m-0 font-weight-bold text-primary bg-light">هدف از راه اندازی ایران اکسپرت</h6>
                     </div>
                     <div class="card-body">
                         <div class="text-center">
                             <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="~/images/undraw_posting_photo.svg" alt="">
                         </div>
-                        <p class="text-gray-900">
+                        <p class="lead text-gray-900">جامعه متخصصین و ایرانیان مقیم آلمان ، در این فضا تمامی نیازمندی های اقشار مختلف پوشش داده می شود. در کنار هم برای آینده ایی روشن</p>
+                        @*<p class="text-gray-900">
                             با گذشت چند سال زندگی در کشور آلمان و مواجهه با سوالات و ابهامات زیاد خصوصا در سال های
                             اولیه و همچنین نبود مرجعی برای یافتن پاسخ ها بر آن شدم تا با ایجاد یک شبکه کوچک به منظور جمع آوری اطلاعات مورد نیاز
                             برای دانشجویان و نیز افراد متخصص بستری فراهم شود تا بتوانیم به هم به منظور رشد و ارتقا فردی و گروهی کمک و یاری رسان باشیم. این در حالی است که کانال های تلگرامی معدودی در حال حاضر این نقش را
                             به عهده دارند ولی عمده مشکل این نرم افزارهای ارتباطی نداشتن آرشیو و ساختار برای ذخیره و دسترسی به اطلاعات می باشد که این معضل در قالب یک وب سایت قابل حل می باشد. علاوه
                             بر آن می توان بسیاری از امکانات دیگر را نیز در آن سفارشی سازی نمود.
-                        </p>
-                        @Html.ActionLink("بیشتر ...", "About")
+                        </p>*@
+                        @Html.ActionLink("بیشتر ...", "About", "Home", new { @class="btn btn-primary btn-large"})
                     </div>
                 </div>
             </div>

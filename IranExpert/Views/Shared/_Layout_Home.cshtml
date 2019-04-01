@@ -10,13 +10,12 @@
     <title>@ViewBag.Title - IranExpert.de</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gray-400 sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-light sidebar sidebar-dark accordion" id="accordionSidebar">
             <li class="nav-item">
 
                 <a href="/" title="Home Page">
@@ -24,50 +23,32 @@
                 </a>
 
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed bg-dark text-gray-100" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <li class="nav-item" style="margin-top:2px">
+                <a class="nav-link collapsed border-bottom-info bg-light text-gray-900" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="border-bottom-style:dotted">
                     <span class="fas fa-id-card"></span>
                     <span>مشخصات فردی - مدیریت</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded" style="direction:rtl">
-                        @Html.ActionLink("مشخصات فردی", "New", "Home", new { @class = "collapse-item" })
+                    <div class="bg-gray-100 py-2 collapse-inner rounded" style="direction:rtl">
+                        @Html.ActionLink("مشخصات کاربری", "Profile", "Home", new { @class = "collapse-item" })
                         @*<a class="collapse-item" href="buttons.html">مشخصات فردی</a>*@
+                        <a class="collapse-item" href="cards.html">  رزومه - صفحه وب شخصی </a>
                         <a class="collapse-item" href="cards.html">مدیریت حساب کاربری</a>
                         <a class="collapse-item" href="cards.html">خروج از برنامه</a>
                     </div>
                 </div>
             </li>
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed bg-warning text-gray-100" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <span class="fas fa-user-edit"></span>
-                    <span> رزومه - ایجاد صفحه وب </span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">سوابق تحصیلی</a>
-                        <a class="collapse-item" href="utilities-border.html">سوابق حرفه ایی</a>
-                        <a class="collapse-item" href="utilities-animation.html">دوره ها و مدارک</a>
-                        <a class="collapse-item" href="utilities-other.html">مهارت ها</a>
-                        <a class="collapse-item" href="utilities-color.html">مهارت های زبانی</a>
-                        <a class="collapse-item" href="utilities-other.html">افتخارات</a>
-                        <a class="collapse-item" href="utilities-border.html">علاقه مندی ها</a>
-                        <a class="collapse-item" href="utilities-animation.html">شبکه های اجتماعی</a>
-
-                    </div>
-                </div>
-            </li>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed bg-danger text-gray-100" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed border-bottom-danger bg-light text-gray-900" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <span class="fas fa-comments"></span>
                     <span>اتاق های گفتگو - ارتباطات</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
+                    <div class="bg-gray-100 py-2 collapse-inner rounded">
                         <a class="collapse-item" href="login.html">اتاق های گفتگو</a>
-                        <a class="collapse-item" href="forgot-password.html"> یادگیری مشارکتی TandemPartners</a>
+                        <a class="collapse-item" href="forgot-password.html"> TandemPartners</a>
+                        <a class="collapse-item" href="register.html">رویدادها و اخبار</a>
                         <a class="collapse-item" href="register.html">جستجو پیشرفته اعضاء</a>
                         <a class="collapse-item" href="blank.html">صندوق پستی - پیام</a>
                     </div>
@@ -75,18 +56,33 @@
 
 
                 <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed bg-info text-gray-100" href="#" data-toggle="collapse" data-target="#collapselang" aria-expanded="true" aria-controls="collapselang">
-                    <span class="fas fa-university"></span>
-                    <span>مسیر زندگی در آلمان</span>
+            <li class="nav-item bg-light">
+                <a class="nav-link collapsed border-bottom-success bg-light text-gray-900" href="#" data-toggle="collapse" data-target="#collapselang" aria-expanded="true" aria-controls="collapselang">
+                    <span class="fas fa-user-graduate"></span>
+                    <span>مسیر تحصیلی و آموزشی</span>
                 </a>
                 <div id="collapselang" class="collapse" aria-labelledby="germany_nav_item" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
+                    <div class="bg-gray-100 py-2 collapse-inner rounded">
                         <a class="collapse-item" href="login.html">شرایط گرفتن پذیرش از دانشگاه</a>
                         <a class="collapse-item" href="forgot-password.html">شرایط تحصیل و زندگی دانشجویی</a>
                         <a class="collapse-item" href="register.html">کار و اشتغال در آلمان</a>
                         <a class="collapse-item" href="blank.html">تفریحات و سرگرمی</a>
                         <a class="collapse-item" href="blank.html">زبان آلمانی و امتحانات ورودی</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed border-bottom-warning bg-light text-gray-900" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                    <span class="fas fa-briefcase"></span>
+                    <span> مسیر شغلی و حرفه ایی </span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-gray-100 py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="utilities-color.html">جستجوی کار</a>
+                        <a class="collapse-item" href="utilities-border.html">مراحل دریافت ویزای کار</a>
+                        <a class="collapse-item" href="utilities-animation.html">ثبت شرکت</a>
+                        <a class="collapse-item" href="utilities-other.html">درج آگهی تبلیغاتی</a>
                     </div>
                 </div>
             </li>
@@ -299,6 +295,7 @@
     <!-- End of Footer -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
 

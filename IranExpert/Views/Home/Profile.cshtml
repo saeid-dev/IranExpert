@@ -1,70 +1,200 @@
 ﻿@model IranExpert.ViewModels.ProfileFormViewModel
 @{
-    ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout_Home.cshtml";
 }
+
 <div class="col-lg-12 mb-1">
     <!-- Illustrations -->
-    <div class="card shadow mb-5">
+    <div class="card shadow border-bottom-info mb-5">
         <div class="card-header py-4">
-            <h6 class="m-0 font-weight-bold text-primary">اطلاعات شخصی</h6>
+            <h6 class="m-0 font-weight-bold text-primary">مشخصات کاربری</h6>
         </div>
-        <div class="card-body">
-            @using (Html.BeginForm("Save", "Home"))
-            {
-                <div class="col-xl-4 col-lg-12">
+        <div class="card-body text-gray-900">
+            <form id="newProfile">
+                <div class="col-xl-12 col-lg-12">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-5">
                             <div class="form-group">
-                                @Html.LabelFor(a => a.Profile.Name)
-                                <br />
-                                @Html.TextBoxFor(a => a.Profile.Name, new { @class = "form-control form-control-user col-lg-10" })
-                                @Html.ValidationMessageFor(a => a.Profile.Name)
+                                <p>نام و نام خانوادگی :</p>
+                                <input id="fullname" class="form-control" type="text" style="width:270px">
                             </div>
-                            <br />
                             <div class="form-group">
-                                @Html.LabelFor(a => a.Profile.Family)
-                                <br />
-                                @Html.TextBoxFor(a => a.Profile.Family, new { @class = "form-control form-control-user col-lg-10" })
-                                @Html.ValidationMessageFor(a => a.Profile.Family)
+                                <p>کشور محل سکونت :</p>
+                                <select name="countrylist" id="country" onChange="combo(this)" class="form-control" style="max-width:270px">
+                                    <option>آلمان</option>
+                                    <option>ایران</option>
+                                    <option>سایر</option>
+                                </select>
                             </div>
-                            <br />
                             <div class="form-group">
-                                @Html.LabelFor(m => m.Profile.StatusId)
-                                @Html.DropDownListFor(m => m.Profile.StatusId, new SelectList(Model.statuses, "Id", "Name"), new { @class = "form-control form-control-user col-lg-10" })
-                                @Html.ValidationMessageFor(m => m.Profile.StatusId)
+                                <p>شهر محل سکونت :</p>
+                                <div class="input-group">
+                                    <input dir="ltr" id="cities" class="form-control" type="text" style="width:270px">
+                                </div>
                             </div>
-                            <br />
                             <div class="form-group">
-                                @Html.LabelFor(m => m.Profile.CityId)
-                                @Html.DropDownListFor(m => m.Profile.CityId, new SelectList(Model.Cities, "Id", "Name"), new { dir = "ltr", @class = "form-control form-control-user col-lg-10" })
-                                @Html.ValidationMessageFor(m => m.Profile.CityId)
+                                <p id="de">وضعیت تحصیلی و شغلی :</p>
+                                <select name="statuslist" id="status" class="form-control" style="max-width:270px">
+                                    <option>دانشجو</option>
+                                    <option>فارغ التحصیل</option>
+                                    <option>دانشجوی زبان</option>
+                                    <option>دانشجوی کالج</option>
+                                    <option>جویای کار</option>
+                                    <option>شاغل</option>
+                                </select>
                             </div>
-                            <br />
                             <div class="form-group">
-                                @Html.LabelFor(m => m.Profile.UniversityId)
-                                @Html.DropDownListFor(m => m.Profile.UniversityId, new SelectList(Model.Universities, "Id", "Name"), new { dir = "ltr", @class = "form-control form-control-user col-lg-10" })
-                                @Html.ValidationMessageFor(m => m.Profile.UniversityId)
+                                <p>نام دانشگاه :</p>
+                                <div class="input-group">
+                                    <input dir="ltr" id="universities" class="form-control" type="text" style="width:270px">
+                                </div>
                             </div>
-                            <br />
                             <div class="form-group">
-                                @Html.LabelFor(m => m.Profile.CountryId)
-                                @Html.DropDownListFor(m => m.Profile.CountryId, new SelectList(Model.Countries, "Id", "Name"), new { @class = "form-control form-control-user col-lg-10" })
-                                @Html.ValidationMessageFor(m => m.Profile.CountryId)
+                                <p>مقطع تحصیلی :</p>
+                                <select name="degreelist" id="degree" class="form-control" style="max-width:270px">
+                                    <option>کارشناسی</option>
+                                    <option>کارشناسی ارشد</option>
+                                    <option>فرصت مطالعاتی</option>
+                                    <option>دکترا</option>
+                                </select>
                             </div>
-                            <br />                            
+                        </div>
+                        <div class="col-lg-5 bg-gray-100">
                             <div class="form-group">
-                                @Html.LabelFor(m => m.Profile.DegreeId)
-                                @Html.DropDownListFor(m => m.Profile.DegreeId, new SelectList(Model.Degrees, "Id", "Titel"), new { @class = "form-control form-control-user col-lg-10" })
-                                @Html.ValidationMessageFor(m => m.Profile.DegreeId)
+                                <p>تاریخ تولد : &nbsp; &nbsp;   << اطلاعات این ستون اختیاری می باشد >></p>
+                                <input dir="ltr" id="birthdate" class="form-control" type="text" style="width:270px">
                             </div>
-                            <br />
-                            <button type="submit">save</button>
+                            <div class="form-group">
+                                <p>تلفن همراه :</p>
+                                <input dir="ltr" id="cellphone" class="form-control" type="text" style="width:270px">
+                            </div>
+                            <div class="form-group">
+                                <p>آدرس ایمیل :</p>
+                                <input dir="ltr" id="email" class="form-control" type="text" style="width:270px">
+                            </div>
+                            <div class="form-group">
+                                <p>وب سایت :</p>
+                                <input dir="ltr" id="website" class="form-control" type="text" style="width:270px">
+                            </div>
+                            <div class="form-group">
+                                <p>حرفه یا شغل :</p>
+                                <input id="business" class="form-control" type="text" style="width:270px">
+                            </div>
+                            <div class="form-group">
+                                <p>  </p>
+                                <button class="btn btn-primary col-lg-5" style="max-width:270px">ذخیره</button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-            }
+            </form>
         </div>
     </div>
 </div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        function combo(countrylist) {
+            if (countrylist.selectedIndex == 1 || countrylist.selectedIndex == 2) {
+                document.getElementById("status").disabled = true;
+                document.getElementById("cities").disabled = true;
+                document.getElementById("universities").disabled = true;
+                document.getElementById("degree").disabled = true;
+            }
+
+            if (countrylist.selectedIndex == 0) {
+                document.getElementById("status").disabled = false;
+                document.getElementById("cities").disabled = false;
+                document.getElementById("universities").disabled = false;
+                document.getElementById("degree").disabled = false;
+            }
+        }
+
+        $(document).ready(function () {
+
+            var profile = {
+                //"BirthDate": null,
+                //"CellPhone": null,
+                //"AlternateEmail": null,
+                //"WebSite": null,
+                //"Business": null,
+                "UserId": "728b39b1-8440-4139-b58b-096696f4cb49"
+            };
+
+            var universities = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/universities?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#universities').typeahead({
+                minLength: 1,
+                highlight: true
+            }, {
+                    name: 'universities',
+                    display: 'Name',
+                    source: universities
+                }).on("typeahead:select", function (e, university) {
+                    profile.UniversityId = university.Id;
+                });
+
+            var cities = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/cities?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#cities').typeahead({
+                minLength: 1,
+                highlight: true
+            }, {
+                    name: 'cities',
+                    display: 'Name',
+                    source: cities
+                }).on("typeahead:select", function (e, city) {
+                    profile.CityId = city.Id;
+                });
+
+            $("#newProfile").validate({
+                submitHandler: function () {
+
+                    profile.FullName = $("#fullname").val();
+                    profile.BirthDate = $("#birthdate").val();
+                    profile.CellPhone = $("#cellphone").val();
+                    profile.AlternateEmail = $("#email").val();
+                    profile.WebSite = $("#website").val();
+                    profile.Business = $("#business").val();
+
+                    profile.CountryId = $("#country option:selected").index() + 1;
+                    profile.DegreeId = $("#degree option:selected").index() + 1;
+                    profile.StatusId = $("#status option:selected").index() + 1;
+
+                    $.ajax({
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+                        url: "/api/profiles",
+                        data: JSON.stringify(profile),
+                        success: function (data) {
+                            alert("profile wird hinzugefügt");
+                        },
+                        error: function (result) {
+                            alert("Something Wnt Wrong");
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+}
+
+
 

@@ -2,7 +2,7 @@
 @{
     Layout = "~/Views/Shared/_Layout_Home.cshtml";
 }
-
+<p id="userid" hidden="hidden">@ViewBag.UserId</p>
 <div class="col-lg-12 mb-1">
     <!-- Illustrations -->
     <div class="card shadow border-bottom-info mb-5">
@@ -29,12 +29,12 @@
                             <div class="form-group">
                                 <p>شهر محل سکونت :</p>
                                 <div class="input-group">
-                                    <input dir="ltr" id="cities" data-rule-required="true" data-msg-required="*" class="form-control" type="text" style="width:270px">
+                                    <input dir="ltr" id="cities" class="form-control" type="text" style="width:270px">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <p id="de">وضعیت تحصیلی و شغلی :</p>
-                                <select name="statuslist" id="status" onChange="statusFunction()" class="form-control" style="max-width:270px">
+                                <select name="statuslist" id="status" onChange="statusFunction()" data-rule-required="true" data-msg-required="لطفا فیلد مربوطه را پر کنید" class="form-control" style="width:270px">
                                     <option>دانشجو</option>
                                     <option>فارغ التحصیل</option>
                                     <option>دانشجوی زبان</option>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="form-group">
                                 <p>مقطع تحصیلی :</p>
-                                <select name="degreelist" id="degree" class="form-control" style="max-width:270px">
+                                <select name="degreelist" id="degree" data-rule-required="true" data-msg-required="لطفا فیلد مربوطه را پر کنید" class="form-control" style="width:270px">
                                     <option>کارشناسی</option>
                                     <option>کارشناسی ارشد</option>
                                     <option>فرصت مطالعاتی</option>
@@ -62,7 +62,7 @@
                         <div class="col-lg-6 bg-gray-100">
                             <div class="form-group">
                                 <p>تاریخ تولد : &nbsp; &nbsp;   << اطلاعات این ستون اختیاری می باشد >></p>
-                                <input dir="ltr" id="birthdate" class="form-control" type="text" style="max-width:270px">
+                                <input dir="ltr" id="birthdate" class="form-control" type="text" placeholder="01.01.2001" style="max-width:270px">
                             </div>
                             <div class="form-group">
                                 <p>تلفن همراه :</p>
@@ -110,6 +110,7 @@
                 cities.disabled = true;
                 universities.disabled = true;
                 degree.disabled = true;
+
                 cities.value = '';
                 universities.value = '';
                 status.value = '';
@@ -121,11 +122,7 @@
                 cities.disabled = false;
                 universities.disabled = false;
                 degree.disabled = false;
-
-                status.selectedIndex = 0;
-                degree.selectedIndex = 0;
             }
-
         }
 
         function statusFunction() {
@@ -150,11 +147,43 @@
 
         $(document).ready(function () {
 
-            var profile = {
-
-                "UserId": "728b39b1-8440-4139-b58b-096696f4cb49"
+            var userid = document.getElementById("userid").innerHTML;
+            var profile =
+            {
+                "UserId": userid
             };
 
+            //GET Profile
+            jQuery.ajax({
+                url: "/api/profiles/" + userid,
+                type: "GET",
+                contentType: 'application/json; charset=utf-8',
+                success: function (resultData) {
+
+                    document.getElementById("fullname").value = resultData.FullName;
+                    document.getElementById("cities").value = resultData.City.Name;
+                    document.getElementById("universities").value = resultData.University.Name;
+                    document.getElementById("status").selectedIndex = resultData.StatusId - 2;
+                    document.getElementById("degree").selectedIndex = resultData.DegreeId - 2;
+                    document.getElementById("country").selectedIndex = resultData.CountryId - 1;
+                    document.getElementById("birthdate").value = resultData.BirthDate;
+                    document.getElementById("cellphone").value = resultData.CellPhone;
+                    document.getElementById("email").value = resultData.AlternateEmail;
+                    document.getElementById("website").value = resultData.WebSite;
+                    document.getElementById("business").value = resultData.Business;
+
+                    profile.CityId = resultData.City.Id;
+                    profile.UniversityId = resultData.University.Id;
+
+                    countryFunction();
+                    statusFunction();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                },
+                timeout: 120000,
+            });
+
+            //GET University
             var universities = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -175,6 +204,7 @@
                     profile.UniversityId = university.Id;
                 });
 
+            //GET City
             var cities = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -195,6 +225,7 @@
                     profile.CityId = city.Id;
                 });
 
+            //POST Profile
             $("#newProfile").validate({
                 submitHandler: function () {
 
@@ -231,31 +262,31 @@
                     }
 
                     if ($("#universities").val() == '')
-                        profile.UniversityId = 256;
+                        profile.UniversityId = 1;
 
                     if ($("#cities").val() == '')
-                        profile.CityId = 76;
+                        profile.CityId = 1;
 
                     profile.CountryId = $("#country option:selected").index() + 1;
 
                     if ($("#status option:selected").index() == -1) {
-                        profile.StatusId = 7;
+                        profile.StatusId = 1;
                     }
                     else {
-                        profile.StatusId = $("#status option:selected").index() + 1;
+                        profile.StatusId = $("#status option:selected").index() + 2;
                     }
 
                     if ($("#degree option:selected").index() == -1) {
-                        profile.DegreeId = 5;
+                        profile.DegreeId = 1;
                     }
                     else {
-                        profile.DegreeId = $("#degree option:selected").index() + 1;
+                        profile.DegreeId = $("#degree option:selected").index() + 2;
                     }
 
                     $.ajax({
                         type: 'POST',
                         contentType: "application/json; charset=utf-8",
-                        url: "/api/profiles",
+                        url: "/api/profiles/" + userid,
                         data: JSON.stringify(profile)
                     }).done(function () {
                         toastr.success("اطلاعات با موفقیت ثبت شد");

@@ -20,47 +20,80 @@ namespace IranExpert.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        //// GET /api/customers
-        public IHttpActionResult GetProfiles(string query = null)
+
+        // GET /api/Profiles
+        public IHttpActionResult GetProfiles(string id)
         {
             var profilesQuery = _context.Profiles
                 .Include(c => c.Status)
                 .Include(c => c.Degree)
                 .Include(c => c.Country)
                 .Include(c => c.University)
-                .Include(c => c.City);
-
-            if (!String.IsNullOrWhiteSpace(query))
-                profilesQuery = profilesQuery.Where(c => c.FullName.Contains(query));
+                .Include(c => c.City).SingleOrDefault(c => c.UserId == id);
 
 
-            var profileDtos = profilesQuery.ToList()
-                .Select(Mapper.Map<Profiles, ProfilesDto>);
+            return Ok(Mapper.Map<Profiles, ProfilesDto>(profilesQuery));
+            //var profileDtos = profilesQuery.Select(Mapper.Map<Profiles, ProfilesDto>);
 
-            return Ok(profileDtos);
+            //return Ok(profileDtos);
         }
 
-        public IHttpActionResult GetProfiles(int id)
-        {
-            var profile = _context.Profiles.SingleOrDefault(p => p.Id == id);
-            if (profile == null)
-                return NotFound();
+        //// GET /api/Profiles
+        //public IHttpActionResult GetProfiles(string query = null)
+        //{
+        //    var profilesQuery = _context.Profiles
+        //        .Include(c => c.Status)
+        //        .Include(c => c.Degree)
+        //        .Include(c => c.Country)
+        //        .Include(c => c.University)
+        //        .Include(c => c.City);
 
-            return Ok(Mapper.Map<Profiles,ProfilesDto>(profile)) ;
-        }
+        //    if (!String.IsNullOrWhiteSpace(query))
+        //        profilesQuery = profilesQuery.Where(c => c.FullName.Contains(query));
+
+
+        //    var profileDtos = profilesQuery.ToList()
+        //        .Select(Mapper.Map<Profiles, ProfilesDto>);
+
+        //    return Ok(profileDtos);
+        //}
+
+
+
+
+        //public IHttpActionResult GetProfiles(int id)
+        //{
+        //    var profile = _context.Profiles.SingleOrDefault(p => p.Id == id);
+        //    if (profile == null)
+        //        return NotFound();
+
+        //    return Ok(Mapper.Map<Profiles, ProfilesDto>(profile));
+        //}
+
+
 
         [HttpPost]
-        public IHttpActionResult CreateProfile(ProfilesDto profileDto)
+        public IHttpActionResult CreateProfile(string id, ProfilesDto profileDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var profile = Mapper.Map<ProfilesDto, Profiles>(profileDto);
-            _context.Profiles.Add(profile);
+            var profileInDb = _context.Profiles.SingleOrDefault(c => c.UserId == id);
+            if (profileInDb == null)
+            {
+                var profile = Mapper.Map<ProfilesDto, Profiles>(profileDto);
+                _context.Profiles.Add(profile);
+                profileDto.Id = profile.Id;
+            }
+            else
+            {
+                Mapper.Map<ProfilesDto, Profiles>(profileDto, profileInDb);
+            }
             _context.SaveChanges();
+            return Ok();
 
-            profileDto.Id = profile.Id;
-            return Created(new Uri(Request.RequestUri + "/" + profile.Id), profileDto);
+            //return Created(new Uri(Request.RequestUri + "/" + profile.Id), profileDto);
+
         }
 
         [HttpPut]
@@ -87,7 +120,7 @@ namespace IranExpert.Controllers.Api
 
             if (profileInDb == null)
                 return NotFound();
-            
+
             _context.Profiles.Remove(profileInDb);
             _context.SaveChanges();
 

@@ -2,6 +2,13 @@
 using System.Web.Mvc;
 using IranExpert.ViewModels;
 using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
+using IranExpert.Dto;
+using System.Linq;
+using System.Data.Entity;
+
+
+
 
 namespace IranExpert.Controllers
 {
@@ -52,7 +59,7 @@ namespace IranExpert.Controllers
                 Cities = _context.Cities,
                 Universities = _context.Universities,
                 Countries = _context.Countries,
-                Degrees = _context.Degrees             
+                Degrees = _context.Degrees
             };
 
             return View("Profile", viewModel);
@@ -90,6 +97,13 @@ namespace IranExpert.Controllers
 
         public ActionResult Profile()
         {
+            //var profile = _context.Profiles.SingleOrDefault(c => c.UserId == User.Identity.GetUserId());
+
+
+            //var profile = _context.Profiles.Include(c => c.Status).Include(c => c.Degree).Include(c => c.Country).Include(c => c.University).Include(c => c.City).SingleOrDefault(c => c.UserId == User.Identity.GetUserId());
+
+            ViewBag.UserId = User.Identity.GetUserId();
+
             return View();
         }
     }

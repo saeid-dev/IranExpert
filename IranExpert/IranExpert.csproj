@@ -195,7 +195,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CitiesController.cs" />
-    <Compile Include="Controllers\Api\NewProfilesController.cs" />
+    <Compile Include="Controllers\Api\NewProfilesController---.cs" />
     <Compile Include="Controllers\Api\ProfilesController.cs" />
     <Compile Include="Controllers\Api\UniversitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

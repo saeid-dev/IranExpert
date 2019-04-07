@@ -1,0 +1,11 @@
+﻿@using Microsoft.AspNet.Identity
+@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <a class="collapse-item" href="javascript:document.getElementById('logoutForm').submit()">خروج
+        @*<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>*@
+    </a>
+    
+
+}

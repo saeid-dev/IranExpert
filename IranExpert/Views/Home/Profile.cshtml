@@ -16,7 +16,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <p>نام و نام خانوادگی :</p>
-                                <input id="fullname" class="form-control" data-rule-required="true" data-msg-required="لطفا نام خود را وارد کنید" type="text" style="width:270px">
+                                <input id="fullname" class="form-control" minlength="4" maxlength="30" size="30" data-rule-required="true" data-msg-required="لطفا نام خود را وارد کنید" type="text" style="width:270px">
                             </div>
                             <div class="form-group">
                                 <p>کشور محل سکونت :</p>
@@ -44,7 +44,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <p>نام دانشگاه :</p>
+                                <p data-toggle="tooltip" data-placement="left" title="بعد از وارد کردن نام شهر حرف U را برای دانشگاه و حرف H یا FH را برای هوخشوله یا نام اختصاری دانشگاه مانند HTW را وارد کنید .  ">نام دانشگاه :  <i class="fas fa-question-circle"></i></p>
                                 <div class="input-group">
                                     <input dir="ltr" id="universities" class="form-control" type="text" style="width:270px">
                                 </div>
@@ -62,29 +62,28 @@
                         <div class="col-lg-6 bg-gray-100">
                             <div class="form-group">
                                 <p>تاریخ تولد : &nbsp; &nbsp;   << اطلاعات این ستون اختیاری می باشد >></p>
-                                <input dir="ltr" id="birthdate" class="form-control" type="text" placeholder="01.01.2001" style="max-width:270px">
+                                <input dir="ltr" id="birthdate" class="form-control" type="date" style="max-width:270px">
                             </div>
                             <div class="form-group">
                                 <p>تلفن همراه :</p>
-                                <input dir="ltr" id="cellphone" class="form-control" type="text" style="max-width:270px">
+                                <input dir="ltr" id="cellphone" class="form-control" minlength="6" maxlength="15" size="15" type="text" style="max-width:270px">
                             </div>
                             <div class="form-group">
                                 <p>آدرس ایمیل :</p>
-                                <input dir="ltr" id="email" class="form-control font-weight-light" type="text" data-rule-email="true" data-msg-email="لطفا ایمیل را صحیح وارد کنید" style="width:270px">
+                                <input dir="ltr" id="email" class="form-control font-weight-light" minlength="5" maxlength="30" size="30" type="text" data-rule-email="true" data-msg-email="لطفا ایمیل را صحیح وارد کنید" style="width:270px">
                             </div>
                             <div class="form-group">
                                 <p>وب سایت :</p>
-                                <input dir="ltr" id="website" class="form-control" type="text" style="width:270px">
+                                <input dir="ltr" id="website" class="form-control" minlength="5" maxlength="30" size="30" type="text" style="width:270px">
                             </div>
                             <div class="form-group">
                                 <p>حرفه یا شغل :</p>
-                                <input id="business" class="form-control" type="text" style="width:270px">
+                                <input id="business" class="form-control" minlength="4" maxlength="70" size="70" type="text" style="width:270px">
                             </div>
                             <div class="form-group">
                                 <p>  </p>
                                 <button class="btn btn-primary col-lg-5" style="max-width:270px">ذخیره</button>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -92,10 +91,22 @@
         </div>
     </div>
 </div>
+
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("https://code.jquery.com/ui/1.12.1/jquery-ui.js")
+
+
     <script type="text/javascript">
+
+        //$(function () {
+        //    $(document).tooltip();
+        //});
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
 
         function countryFunction() {
 
@@ -146,6 +157,10 @@
         }
 
         $(document).ready(function () {
+
+            
+            document.getElementById("status").selectedIndex = -1;
+            document.getElementById("degree").selectedIndex = -1;
 
             var userid = document.getElementById("userid").innerHTML;
             var profile =

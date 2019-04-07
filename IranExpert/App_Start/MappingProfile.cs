@@ -29,11 +29,11 @@ namespace IranExpert.App_Start
             Mapper.CreateMap<CountryDto,Country>();
 
             Mapper.CreateMap<Profiles, ProfilesDto>();
-
-            // Dto to Domain
             Mapper.CreateMap<ProfilesDto, Profiles>().ForMember(c => c.Id, opt => opt.Ignore());
-
             Mapper.CreateMap<ProfilesDto, Profiles>();
+
+            Mapper.CreateMap<Profiles, ProfileSearchDto>();
+            Mapper.CreateMap<ProfileSearchDto, Profiles>();
         }
     }
 }

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>@ViewBag.Title - IranExpert.de</title>
+    <title>ایران لینک</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -30,10 +30,10 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-gray-100 py-2 collapse-inner rounded" style="direction:rtl">
-                        @Html.ActionLink("مشخصات کاربری", "Profile","Home", new { @class = "collapse-item" })
-                        <a class="collapse-item" href="cards.html">  رزومه - صفحه وب شخصی </a>
-                        <a class="collapse-item" href="cards.html">مدیریت حساب کاربری</a>
-                        <a class="collapse-item" href="cards.html">خروج از برنامه</a>
+                        @Html.ActionLink("مشخصات کاربری", "Index", "Profile", null, new { @class = "collapse-item" })
+                        <a class="collapse-item" href="#" title="در حال پیاده سازی">  رزومه - صفحه وب شخصی </a>
+                        <a class="collapse-item" href="#">مدیریت حساب کاربری</a>
+                        @Html.Partial("_LogoutPartial_Main")
                     </div>
                 </div>
             </li>
@@ -45,11 +45,11 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-gray-100 py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">اتاق های گفتگو</a>
-                        <a class="collapse-item" href="forgot-password.html"> TandemPartners</a>
-                        <a class="collapse-item" href="register.html">رویدادها و اخبار</a>
-                        <a class="collapse-item" href="register.html">جستجو پیشرفته اعضاء</a>
-                        <a class="collapse-item" href="blank.html">صندوق پستی - پیام</a>
+                        @Html.ActionLink("کاربران سایت","SearchProfile","Profile", null ,new { @class = "collapse-item" })
+                        <a class="collapse-item" href="#">اتاق های گفتگو</a>
+                        <a class="collapse-item" href="#"> TandemPartners</a>
+                        <a class="collapse-item" href="#">رویدادها و اخبار</a>
+                        <a class="collapse-item" href="#">صندوق پستی - پیام</a>
                     </div>
                 </div>
 
@@ -62,11 +62,11 @@
                 </a>
                 <div id="collapselang" class="collapse" aria-labelledby="germany_nav_item" data-parent="#accordionSidebar">
                     <div class="bg-gray-100 py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">شرایط گرفتن پذیرش از دانشگاه</a>
-                        <a class="collapse-item" href="forgot-password.html">شرایط تحصیل و زندگی دانشجویی</a>
-                        <a class="collapse-item" href="register.html">کار و درآمد دانشجویی</a>
-                        <a class="collapse-item" href="blank.html">رویدادهای مرتبط با تحصیل</a>
-                        <a class="collapse-item" href="blank.html">زبان آلمانی و امتحانات ورودی</a>
+                        <a class="collapse-item" href="#">شرایط گرفتن پذیرش از دانشگاه</a>
+                        <a class="collapse-item" href="#">شرایط تحصیل و زندگی دانشجویی</a>
+                        <a class="collapse-item" href="#">کار و درآمد دانشجویی</a>
+                        <a class="collapse-item" href="#">رویدادهای مرتبط با تحصیل</a>
+                        <a class="collapse-item" href="#">زبان آلمانی و امتحانات ورودی</a>
                     </div>
                 </div>
             </li>
@@ -78,10 +78,10 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-gray-100 py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">جستجوی کار</a>
-                        <a class="collapse-item" href="utilities-border.html">مراحل دریافت ویزای کار</a>
-                        <a class="collapse-item" href="utilities-animation.html">ثبت شرکت و خوداشتغالی</a>
-                        <a class="collapse-item" href="utilities-other.html">تبلیغات مشاغل</a>
+                        <a class="collapse-item" href="#">جستجوی کار</a>
+                        <a class="collapse-item" href="#">مراحل دریافت ویزای کار</a>
+                        <a class="collapse-item" href="#">ثبت شرکت و خوداشتغالی</a>
+                        <a class="collapse-item" href="#">تبلیغات مشاغل</a>
                     </div>
                 </div>
             </li>
@@ -106,12 +106,12 @@
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" style="border-radius:5rem" class="form-control bg-light border-0 small" placeholder="...جستجوی اعضاء" aria-label="Search" aria-describedby="basic-addon2">
+                            @*<input type="text" style="border-radius:5rem" class="form-control bg-light border-0 small" placeholder="...جستجوی اعضاء" aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
-                            </div>
+                            </div>*@
                         </div>
                     </form>
                     <!-- Topbar Navbar -->
@@ -140,25 +140,25 @@
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">2</span>
+                                <span class="badge badge-danger badge-counter">1</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
+                            <div dir="rtl" class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown" style="text-align:right">
+                                <h6 class="dropdown-header font-weight-normal" >
+                                    رویدادها
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
+                                    @*<div class="mr-3">
                                         <div class="icon-circle bg-primary">
                                             <i class="fas fa-file-alt text-white"></i>
                                         </div>
-                                    </div>
+                                    </div>*@
                                     <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                        <div class="small text-gray-500">May 01, 2019</div>
+                                        <span class="font-weight-bold">نمایشگاه کاریابی در برلین</span>
                                     </div>
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                @*<a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="mr-3">
                                         <div class="icon-circle bg-success">
                                             <i class="fas fa-donate text-white"></i>
@@ -179,8 +179,8 @@
                                         <div class="small text-gray-500">December 2, 2019</div>
                                         Spending Alert: We've noticed unusually high spending for your account.
                                     </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                </a>*@
+                                <a class="dropdown-item text-center small text-gray-500" href="#">نمایش همه رویدادها</a>
                             </div>
                         </li>
                         <!-- Nav Item - Messages -->
@@ -191,21 +191,21 @@
                                 <span class="badge badge-danger badge-counter">1</span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown" style="text-align:right">
+                                <h6 class="dropdown-header font-weight-normal">
+                                    پیام ها
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
+                                    @*<div class="dropdown-list-image mr-3">
                                         <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
                                         <div class="status-indicator bg-success"></div>
-                                    </div>
+                                    </div>*@
                                     <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                        <div class="text-truncate">به ایران لینک خوش آمدید</div>
+                                        <div class="small text-gray-500">از طرف مدیر سایت :</div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                @*<a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
                                         <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
                                         <div class="status-indicator"></div>
@@ -234,8 +234,8 @@
                                         <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
                                         <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                     </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                </a>*@
+                                <a class="dropdown-item text-center small text-gray-500" href="#">نمایش همه پیام ها</a>
                             </div>
                         </li>
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -248,20 +248,20 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
-                                    مشخصات فردی
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    مشخصات کاربری
+                                    <i class="fas fa-id-card fa-sm fa-fw mr-2 text-gray-400"></i>
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    رزومه الکترونیکی
-                                    <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    پیام ها و ارتباطات
+                                    ارتباطات
                                     <i class="fas fa-comments fa-sm fa-fw mr-2 text-gray-400"></i>
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    زندگی در آلمان
-                                    <i class="fas fa-university fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    مسیر تحصیلی
+                                    <i class="fas fa-user-graduate fa-sm fa-fw mr-2 text-gray-400"></i>
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    مسیر شغلی
+                                    <i class="fas fa-briefcase fa-sm fa-fw mr-2 text-gray-400"></i>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 @Html.Partial("_LogoutPartial")
